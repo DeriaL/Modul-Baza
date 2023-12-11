@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>База даних співробітників</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+    
+            h1, h2 {
+                color: #333;
+            }
+    
+            table {
+                width: 80%;
+                margin: 20px auto;
+                border-collapse: collapse;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+            }
+    
+            table, th, td {
+                border: 1px solid #ddd;
+            }
+    
+            th, td {
+                padding: 15px;
+                text-align: left;
+            }
+    
+            th {
+                background-color: #f2f2f2;
+            }
+    
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+    
+            h2 {
+                margin-top: 30px;
+            }
+    
+            form {
+                width: 60%;
+                margin: 20px auto;
+                background-color: #fff;
+                padding: 20px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+    
+            label {
+                display: block;
+                margin: 10px 0 5px;
+            }
+    
+            input, button {
+                margin-bottom: 15px;
+            }
+    
+            button {
+                background-color: #4caf50;
+                color: #fff;
+                padding: 10px 15px;
+                border: none;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+        </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/templates/style.css">
+    <title>База даних співробітників</title>
+</head>
+<body>
+    <h1>База даних співробітників</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Position</th>
+            <th>Years Worked</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee[0] }}</td>
+            <td>{{ employee[1] }}</td>
+            <td>{{ employee[2] }}</td>
+            <td>{{ employee[3] }}</td>
+            <td>{{ employee[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Додати в базу</h2>
+    <form action="/add_employee" method="post">
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" required>
+
+        <label for="years_worked">Years Worked:</label>
+        <input type="number" id="years_worked" name="years_worked" required>
+
+        <button type="submit">Додати</button>
+    </form>
+</body>
+</html>
